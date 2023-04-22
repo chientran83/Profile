@@ -36,6 +36,7 @@ const HomeLayout: FC<Props> = ({
           justify="space-between"
           direction={{ base: "column", lg: "row" }}
           h="100%"
+          mt="25px"
         >
           <VStack spacing="2" align="flex-start" maxW="430px">
             <Text fontSize="30px" color={themeCurrent?.colorText?.light}>
@@ -140,7 +141,7 @@ const HomeLayout: FC<Props> = ({
           </Flex>
         </Flex>
         {/* steps */}
-        <Box mt={{ base: "30px", lg: "0" }}>
+        <Box mt="25px">
           <Text
             color={THEME.primary.main}
             fontSize="22px"
@@ -202,7 +203,7 @@ const HomeLayout: FC<Props> = ({
           </Flex>
         </Box>
         {/* project */}
-        <Box mt={{ base: "30px", lg: "0" }}>
+        <Box mt="30px">
           <Text
             color={THEME.primary.main}
             fontSize="22px"
