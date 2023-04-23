@@ -6,21 +6,21 @@ import { useStore } from "../../store/hook";
 export type ReceivedProps = Record<string, any>;
 
 const useHeader = (props: ReceivedProps) => {
-  const [state, dispatch] = useStore();
+  const { themes } = useStore();
 
   const onChangeTheme = (value: string) => {
     if (value === "dark") {
-      dispatch(setTheme(THEME.dark));
+      themes.dispatch(setTheme(THEME.dark));
     } else if (value === "light") {
-      dispatch(setTheme(THEME.light));
+      themes.dispatch(setTheme(THEME.light));
     }
   };
 
   useEffect(() => {
-    dispatch(setTheme(THEME.dark));
+    themes.dispatch(setTheme(THEME.dark));
   }, []);
 
-  return { ...props, onChangeTheme, themeCurrent: state };
+  return { ...props, onChangeTheme, themeCurrent: themes.state };
 };
 export type Props = ReturnType<typeof useHeader>;
 export default useHeader;

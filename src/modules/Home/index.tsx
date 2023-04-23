@@ -1,4 +1,5 @@
 import { FacebookOutlined, GithubOutlined } from "@ant-design/icons";
+import { Link as ReactLink } from "react-router-dom";
 import {
   Box,
   Button,
@@ -223,7 +224,7 @@ const HomeLayout: FC<Props> = ({
             Sản phẩm của mình
           </Text>
           <Flex mt="30px" ml="-23px" direction="row" wrap="wrap">
-            {projects.map((project, index) => {
+            {projects?.map((project: any, index: number) => {
               return (
                 <Box
                   width={{
@@ -239,18 +240,20 @@ const HomeLayout: FC<Props> = ({
                   p="10px"
                   borderRadius="8px"
                 >
-                  <Image
-                    objectFit="cover"
-                    src={project.image[0]}
-                    borderRadius="8px"
-                    h="146px"
-                  />
-                  <Text fontSize="22px" color={THEME.primary.main} m="3px 0">
-                    {project.name}
-                  </Text>
-                  <Text noOfLines={3} color={themeCurrent?.colorText?.light}>
-                    {project.content}
-                  </Text>
+                  <Link as={ReactLink} to={`/project/${project.id}`}>
+                    <Image
+                      objectFit="cover"
+                      src={project.images[0]}
+                      borderRadius="8px"
+                      h="146px"
+                    />
+                    <Text fontSize="22px" color={THEME.primary.main} m="3px 0">
+                      {project.name}
+                    </Text>
+                    <Text noOfLines={3} color={themeCurrent?.colorText?.light}>
+                      {project.content}
+                    </Text>
+                  </Link>
                 </Box>
               );
             })}

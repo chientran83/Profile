@@ -8,6 +8,7 @@ import {
 } from "react";
 import { THEME } from "../libraries/styled-components";
 import { setTheme } from "./actions";
+import ProjectReducer, { initStateProject } from "./ProjectReducer";
 import ThemeReducer, { initState } from "./ThemeReducer";
 
 type ProviderContextType = {
@@ -17,14 +18,23 @@ type ProviderContextType = {
 export const ThemeContext = createContext<any>([]);
 
 const ProviderContext: FC<ProviderContextType> = ({ children }) => {
-  const [state, dispatch] = useReducer(ThemeReducer, initState);
+  const [themesState, themesDispatch] = useReducer(ThemeReducer, initState);
+  const [projectState, projectDispatch] = useReducer(
+    ProjectReducer,
+    initStateProject
+  );
 
   useEffect(() => {
-    dispatch(setTheme(THEME.dark));
+    themesDispatch(setTheme(THEME.dark));
   }, []);
 
   return (
-    <ThemeContext.Provider value={[state, dispatch]}>
+    <ThemeContext.Provider
+      value={{
+        themes: { state: themesState, dispatch: themesDispatch },
+        project: { state: projectState, dispatch: projectDispatch },
+      }}
+    >
       {children}
     </ThemeContext.Provider>
   );

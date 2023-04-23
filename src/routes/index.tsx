@@ -3,6 +3,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { FC } from "react";
 import DefaultLayout from "../components/DefaultLayout";
 import Home from "../modules/Home";
+import Project from "../modules/Project";
 
 const AppRoutes: FC = () => {
   const router = createBrowserRouter([
@@ -13,6 +14,10 @@ const AppRoutes: FC = () => {
         {
           path: "",
           element: <Home />,
+        },
+        {
+          path: "project/:projectId",
+          element: <Project />,
         },
       ],
     },

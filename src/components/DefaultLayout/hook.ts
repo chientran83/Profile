@@ -4,8 +4,8 @@ import { useStore } from "../../store/hook";
 export type ReceivedProps = Record<string, any>;
 
 const useDefaultLayout = (props: ReceivedProps) => {
-  const [state, dispatch] = useStore();
-  return { ...props, themeCurrent: state };
+  const { themes } = useStore();
+  return { ...props, themeCurrent: themes.state };
 };
 
 export type Props = ReturnType<typeof useDefaultLayout>;
